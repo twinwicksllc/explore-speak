@@ -1,0 +1,38 @@
+{
+  "name": "language-quest",
+  "version": "1.0.0",
+  "description": "Portuguese learning and travel planning app with AI Brazilian travel advisor Sofia",
+  "main": "backend/index.js",
+  "scripts": {
+    "test": "node scripts/test-bedrock-access.js",
+    "start": "node backend/index.js",
+    "deploy": "echo 'Use AWS console or CLI to deploy Lambda functions'"
+  },
+  "keywords": [
+    "portuguese",
+    "language-learning",
+    "travel",
+    "ai",
+    "brazil",
+    "aws",
+    "serverless",
+    "bedrock",
+    "claude"
+  ],
+  "author": "Language Quest Team",
+  "license": "MIT",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.0.0",
+    "@aws-sdk/client-bedrock-runtime": "^3.0.0",
+    "@aws-sdk/lib-dynamodb": "^3.0.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twinwicksllc/LanguageQuest.git"
+  },
+  "homepage": "https://travel.twin-wicks.com"
+}
