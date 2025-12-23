@@ -25,7 +25,7 @@ export const getAllQuests = async (userId?: string): Promise<QuestListItem[]> =>
     }
 
     // The backend requires guideId, so we fetch quests for all known guides
-    const guides = ['pierre', 'sofia', 'marco', 'sakura'];
+    const guides = ['pierre', 'lucia', 'marco', 'sakura'];
     
     const questPromises = guides.map(async (guideId) => {
       try {
