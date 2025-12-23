@@ -9,6 +9,7 @@ import ConfirmEmail from './components/auth/ConfirmEmail';
 import Dashboard from './pages/Dashboard';
 import QuestList from './pages/QuestList';
 import QuestDetail from './pages/QuestDetail';
+import QuestPlay from './pages/QuestPlay';
 import './App.css';
 
 function App() {
@@ -35,6 +36,11 @@ function App() {
           <Route path="/quests/:questId" element={
             <ProtectedRoute>
               <QuestDetail />
+            </ProtectedRoute>
+          } />
+          <Route path="/quests/:questId/play" element={
+            <ProtectedRoute>
+              <QuestPlay />
             </ProtectedRoute>
           } />
         </Routes>
