@@ -117,46 +117,65 @@ const QuestDetail: React.FC = () => {
 
         <div className="quest-content">
           {/* Overview Section */}
-          <section className="content-section">
-            <h2>📖 Overview</h2>
-            <p className="quest-overview">{quest.overview}</p>
-          </section>
-
-          {/* Cultural Context */}
-          {quest.culturalContext && (
-            <section className="content-section cultural-context">
-              <h2>🌍 Cultural Context</h2>
-              <p>{quest.culturalContext}</p>
+          {quest.questDialogue?.scenario && (
+            <section className="content-section">
+              <h2>📖 Overview</h2>
+              <div className="quest-overview">
+                <p><strong>Setting:</strong> {quest.questDialogue.scenario.setting}</p>
+                <p><strong>Goal:</strong> {quest.questDialogue.scenario.goal}</p>
+                {quest.questDialogue.scenario.guideIntro && (
+                  <p className="guide-intro">💬 <em>{quest.questDialogue.scenario.guideIntro}</em></p>
+                )}
+              </div>
             </section>
           )}
 
-          {/* Learning Objectives */}
-          {quest.learningObjectives && quest.learningObjectives.length > 0 && (
+          {/* Cultural Context */}
+          {quest.preQuest?.culturalNote && (
+            <section className="content-section cultural-context">
+              <h2>🌍 {quest.preQuest.culturalNote.title || 'Cultural Context'}</h2>
+              <p>{quest.preQuest.culturalNote.content}</p>
+            </section>
+          )}
+
+          {/* Grammar Pattern */}
+          {quest.preQuest?.grammar && (
             <section className="content-section">
-              <h2>🎯 Learning Objectives</h2>
-              <ul className="objectives-list">
-                {quest.learningObjectives.map((objective, index) => (
-                  <li key={index}>{objective}</li>
-                ))}
-              </ul>
+              <h2>📝 Grammar Focus</h2>
+              <div className="grammar-section">
+                <p><strong>Pattern:</strong> {quest.preQuest.grammar.pattern}</p>
+                <p><strong>Explanation:</strong> {quest.preQuest.grammar.explanation}</p>
+                {quest.preQuest.grammar.examples && quest.preQuest.grammar.examples.length > 0 && (
+                  <div className="grammar-examples">
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                      {quest.preQuest.grammar.examples.map((example: any, index: number) => (
+                        <li key={index}>
+                          {example.targetLanguage} <span className="translation">({example.english})</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             </section>
           )}
 
           {/* Vocabulary Preview */}
-          {quest.preQuest?.keyVocabulary && quest.preQuest.keyVocabulary.length > 0 && (
+          {quest.preQuest?.vocabulary && quest.preQuest.vocabulary.length > 0 && (
             <section className="content-section">
               <h2>📚 Key Vocabulary</h2>
               <div className="vocabulary-grid">
-                {quest.preQuest.keyVocabulary.slice(0, 6).map((vocab, index) => (
+                {quest.preQuest.vocabulary.slice(0, 6).map((vocab: any, index: number) => (
                   <div key={index} className="vocab-card">
                     <div className="vocab-word">{vocab.word}</div>
                     <div className="vocab-translation">{vocab.translation}</div>
                   </div>
                 ))}
               </div>
-              {quest.preQuest.keyVocabulary.length > 6 && (
+              {quest.preQuest.vocabulary.length > 6 && (
                 <p className="vocab-more">
-                  +{quest.preQuest.keyVocabulary.length - 6} more words to learn
+                  +{quest.preQuest.vocabulary.length - 6} more words to learn
                 </p>
               )}
             </section>
