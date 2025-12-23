@@ -39,11 +39,11 @@ export const QuestProvider: React.FC<QuestProviderProps> = ({ children }) => {
   /**
    * Fetch all available quests
    */
-  const fetchQuests = useCallback(async () => {
+  const fetchQuests = useCallback(async (userId?: string) => {
     setLoading(true);
     setError(null);
     try {
-      const questList = await questService.getAllQuests();
+      const questList = await questService.getAllQuests(userId);
       setQuests(questList);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to load quests';

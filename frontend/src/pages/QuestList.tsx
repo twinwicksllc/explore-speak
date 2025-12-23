@@ -12,8 +12,10 @@ const QuestList: React.FC = () => {
 
   useEffect(() => {
     // Fetch quests when component mounts
-    fetchQuests();
-  }, [fetchQuests]);
+    if (user?.userId) {
+      fetchQuests(user.userId);
+    }
+  }, [fetchQuests, user]);
 
   const handleSignout = () => {
     signout();

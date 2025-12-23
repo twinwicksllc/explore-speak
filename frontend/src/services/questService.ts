@@ -18,11 +18,12 @@ import type {
 /**
  * Get all available quests
  */
-export const getAllQuests = async (): Promise<QuestListItem[]> => {
+export const getAllQuests = async (userId?: string): Promise<QuestListItem[]> => {
   try {
-    const response = await axios.get<QuestListItem[]>(
-      `${API_BASE_URL}${API_ENDPOINTS.QUESTS}`
-    );
+    const url = userId 
+      ? `${API_BASE_URL}${API_ENDPOINTS.QUESTS}?userId=${userId}`
+      : `${API_BASE_URL}${API_ENDPOINTS.QUESTS}`;
+    const response = await axios.get<QuestListItem[]>(url);
     return response.data;
   } catch (error) {
     console.error('Error fetching quests:', error);
