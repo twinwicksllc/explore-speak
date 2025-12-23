@@ -22,6 +22,38 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  // Helper to parse Cognito error messages into user-friendly text
+  const parseAuthError = (error: string): string => {
+    if (error.includes('UsernameExistsException') || error.includes('already exists')) {
+      return 'This email is already registered. Please sign in or use a different email.';
+    }
+    if (error.includes('InvalidPasswordException') || error.includes('password')) {
+      return 'Password must be at least 8 characters with uppercase, lowercase, and numbers.';
+    }
+    if (error.includes('InvalidParameterException')) {
+      return 'Invalid email or password format. Please check your input.';
+    }
+    if (error.includes('CodeMismatchException')) {
+      return 'Invalid verification code. Please check and try again.';
+    }
+    if (error.includes('ExpiredCodeException')) {
+      return 'Verification code has expired. Please request a new one.';
+    }
+    if (error.includes('NotAuthorizedException')) {
+      return 'Incorrect email or password. Please try again.';
+    }
+    if (error.includes('UserNotFoundException')) {
+      return 'No account found with this email. Please sign up first.';
+    }
+    if (error.includes('UserNotConfirmedException')) {
+      return 'Please verify your email before signing in.';
+    }
+    if (error.includes('Network Error') || error.includes('ECONNREFUSED')) {
+      return 'Unable to connect to the server. Please check your internet connection.';
+    }
+    return error || 'An unexpected error occurred. Please try again.';
+  };
+
   // Initialize auth state from localStorage
   useEffect(() => {
     const initializeAuth = () => {
@@ -60,9 +92,15 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         throw new Error(response.data.error || 'Signup failed');
       }
     } catch (err) {
-      const errorMessage = err instanceof AxiosError 
-        ? err.response?.data?.error || err.message 
-        : 'Signup failed';
+      let errorMessage = 'Signup failed';
+      
+      if (err instanceof AxiosError) {
+        const rawError = err.response?.data?.error || err.message;
+        errorMessage = parseAuthError(rawError);
+      } else if (err instanceof Error) {
+        errorMessage = parseAuthError(err.message);
+      }
+      
       setError(errorMessage);
       throw new Error(errorMessage);
     }
@@ -83,9 +121,15 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         throw new Error(response.data.error || 'Confirmation failed');
       }
     } catch (err) {
-      const errorMessage = err instanceof AxiosError
-        ? err.response?.data?.error || err.message
-        : 'Confirmation failed';
+      let errorMessage = 'Confirmation failed';
+      
+      if (err instanceof AxiosError) {
+        const rawError = err.response?.data?.error || err.message;
+        errorMessage = parseAuthError(rawError);
+      } else if (err instanceof Error) {
+        errorMessage = parseAuthError(err.message);
+      }
+      
       setError(errorMessage);
       throw new Error(errorMessage);
     }
@@ -113,9 +157,15 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         throw new Error(response.data.error || 'Sign in failed');
       }
     } catch (err) {
-      const errorMessage = err instanceof AxiosError
-        ? err.response?.data?.error || err.message
-        : 'Sign in failed';
+      let errorMessage = 'Sign in failed';
+      
+      if (err instanceof AxiosError) {
+        const rawError = err.response?.data?.error || err.message;
+        errorMessage = parseAuthError(rawError);
+      } else if (err instanceof Error) {
+        errorMessage = parseAuthError(err.message);
+      }
+      
       setError(errorMessage);
       throw new Error(errorMessage);
     }
