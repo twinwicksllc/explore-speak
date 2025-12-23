@@ -20,11 +20,29 @@ import type {
  */
 export const getAllQuests = async (userId?: string): Promise<QuestListItem[]> => {
   try {
-    const url = userId 
-      ? `${API_BASE_URL}${API_ENDPOINTS.QUESTS}?userId=${userId}`
-      : `${API_BASE_URL}${API_ENDPOINTS.QUESTS}`;
-    const response = await axios.get<QuestListItem[]>(url);
-    return response.data;
+    if (!userId) {
+      throw new Error('User ID is required');
+    }
+
+    // The backend requires guideId, so we fetch quests for all known guides
+    const guides = ['pierre', 'sofia', 'marco', 'sakura'];
+    
+    const questPromises = guides.map(async (guideId) => {
+      try {
+        const response = await axios.get<{ quests: QuestListItem[] }>(
+          `${API_BASE_URL}${API_ENDPOINTS.QUESTS}?userId=${userId}&guideId=${guideId}`
+        );
+        return response.data.quests || [];
+      } catch (error) {
+        console.warn(`Failed to fetch quests for guide ${guideId}:`, error);
+        return [];
+      }
+    });
+
+    const questArrays = await Promise.all(questPromises);
+    const allQuests = questArrays.flat();
+    
+    return allQuests;
   } catch (error) {
     console.error('Error fetching quests:', error);
     throw new Error('Failed to load quests. Please try again.');
