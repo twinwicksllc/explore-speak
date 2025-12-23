@@ -67,7 +67,33 @@
 .welcome-subtitle {
   font-size: 1.125rem;
   opacity: 0.9;
-  margin: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.browse-quests-button {
+  background: white;
+  color: #667eea;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.browse-quests-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  background: #f7fafc;
+}
+
+.browse-quests-button:active {
+  transform: translateY(-1px);
 }
 
 /* Stats Grid */

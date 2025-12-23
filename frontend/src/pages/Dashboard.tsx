@@ -34,6 +34,9 @@ const Dashboard: React.FC = () => {
         <div className="welcome-section">
           <h2>Welcome back, {user.name}! 👋</h2>
           <p className="welcome-subtitle">Ready to continue your language learning journey?</p>
+          <button onClick={() => navigate('/quests')} className="browse-quests-button">
+            🌍 Browse Quests
+          </button>
         </div>
 
         <div className="stats-grid">
@@ -64,16 +67,17 @@ const Dashboard: React.FC = () => {
 
         <div className="info-section">
           <div className="info-card">
-            <h3>🎉 Authentication System Active!</h3>
-            <p>You've successfully signed in to the new Explore Speak platform.</p>
+            <h3>🚀 Start Your Language Adventure!</h3>
+            <p>Choose from 4 interactive quests in French, Portuguese, Italian, and Japanese.</p>
             <p className="info-details">
-              <strong>User ID:</strong> {user.userId}<br />
-              <strong>Email:</strong> {user.email}<br />
-              <strong>Name:</strong> {user.name}
+              Each quest includes:
+              <br />• Cultural context and learning objectives
+              <br />• Interactive dialogue with AI guides
+              <br />• Vocabulary and grammar exercises
+              <br />• XP rewards and achievements
             </p>
             <div className="info-note">
-              <strong>Note:</strong> The quest system integration is coming next! 
-              For now, you can test the authentication flow by signing out and signing back in.
+              Click <strong>Browse Quests</strong> above to get started!
             </div>
           </div>
         </div>
