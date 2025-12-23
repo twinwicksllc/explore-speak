@@ -18,7 +18,7 @@ type ConfirmFormData = z.infer<typeof confirmSchema>;
 const ConfirmEmail: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { confirm } = useAuth();
+  const { confirmEmail } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isResending, setIsResending] = useState(false);
@@ -44,7 +44,7 @@ const ConfirmEmail: React.FC = () => {
     setError(null);
 
     try {
-      await confirm(email, data.code);
+      await confirmEmail(email, data.code);
       // Redirect to login after successful confirmation
       navigate('/login', { 
         state: { 
