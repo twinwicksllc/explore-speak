@@ -24,6 +24,8 @@ const QuestPlay: React.FC = () => {
   const [userInput, setUserInput] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
   const [showExercise, setShowExercise] = useState(false);
+  const [showHint, setShowHint] = useState(false);
+  const [teachingPhrase, setTeachingPhrase] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Load quest data
@@ -104,6 +106,18 @@ const QuestPlay: React.FC = () => {
       }, 2000);
       
     } else if (step.speaker === 'user_prompt') {
+      // First, teach the phrase
+      const phraseToTeach = step.acceptableResponses?.[0];
+      if (phraseToTeach) {
+        const teachMessage: Message = {
+          id: `teach-${step.stepId}`,
+          speaker: 'guide',
+          text: `Let me teach you how to say this. Repeat after me: "${phraseToTeach}"`,
+          timestamp: new Date(),
+        };
+        setMessages(prev => [...prev, teachMessage]);
+        setTeachingPhrase(phraseToTeach);
+      }
       // Wait for user input
       setCurrentStepIndex(stepIndex);
       // User input form is already visible
@@ -146,6 +160,8 @@ const QuestPlay: React.FC = () => {
       
       setUserInput('');
       setIsProcessing(false);
+      setShowHint(false);
+      setTeachingPhrase(null);
       
       // Move to next step
       setTimeout(() => {
@@ -260,6 +276,31 @@ const QuestPlay: React.FC = () => {
             <div className="input-prompt">
               {currentStep?.userPrompt}
             </div>
+            
+            {/* Teaching Phrase Display */}
+            {teachingPhrase && (
+              <div className="teaching-phrase">
+                <div className="phrase-label">📝 Phrase to learn:</div>
+                <div className="phrase-text">{teachingPhrase}</div>
+              </div>
+            )}
+            
+            {/* Hint Button */}
+            <div className="hint-section">
+              <button 
+                type="button"
+                onClick={() => setShowHint(!showHint)}
+                className="hint-button"
+              >
+                💡 {showHint ? 'Hide' : 'Show'} Hint
+              </button>
+              {showHint && teachingPhrase && (
+                <div className="hint-box">
+                  <strong>Hint:</strong> Try typing: <code>{teachingPhrase}</code>
+                </div>
+              )}
+            </div>
+            
             <form onSubmit={handleUserSubmit} className="input-form">
               <input
                 type="text"
