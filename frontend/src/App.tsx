@@ -8,6 +8,7 @@ import Signup from './components/auth/Signup';
 import ConfirmEmail from './components/auth/ConfirmEmail';
 import Dashboard from './pages/Dashboard';
 import QuestList from './pages/QuestList';
+import QuestDetail from './pages/QuestDetail';
 import './App.css';
 
 function App() {
@@ -29,6 +30,11 @@ function App() {
           <Route path="/quests" element={
             <ProtectedRoute>
               <QuestList />
+            </ProtectedRoute>
+          } />
+          <Route path="/quests/:questId" element={
+            <ProtectedRoute>
+              <QuestDetail />
             </ProtectedRoute>
           } />
         </Routes>
