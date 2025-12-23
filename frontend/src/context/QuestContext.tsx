@@ -56,11 +56,11 @@ export const QuestProvider: React.FC<QuestProviderProps> = ({ children }) => {
   /**
    * Fetch a specific quest by ID
    */
-  const fetchQuestById = useCallback(async (questId: string) => {
+  const fetchQuestById = useCallback(async (questId: string, userId: string) => {
     setLoading(true);
     setError(null);
     try {
-      const quest = await questService.getQuestById(questId);
+      const quest = await questService.getQuestById(questId, userId);
       setCurrentQuest(quest);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to load quest';

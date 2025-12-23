@@ -52,10 +52,10 @@ export const getAllQuests = async (userId?: string): Promise<QuestListItem[]> =>
 /**
  * Get detailed information about a specific quest
  */
-export const getQuestById = async (questId: string): Promise<Quest> => {
+export const getQuestById = async (questId: string, userId: string): Promise<Quest> => {
   try {
     const response = await axios.get<Quest>(
-      `${API_BASE_URL}${API_ENDPOINTS.QUEST_DETAIL(questId)}`
+      `${API_BASE_URL}${API_ENDPOINTS.QUEST_DETAIL(questId)}?userId=${userId}`
     );
     return response.data;
   } catch (error) {
