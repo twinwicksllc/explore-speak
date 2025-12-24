@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useQuest } from '../context/QuestContext';
+import * as questService from '../services/questService';
+import ExerciseCard from '../components/exercises/ExerciseCard';
 import './QuestPlay.css';
 
 interface Message {
@@ -23,7 +25,7 @@ const QuestPlay: React.FC = () => {
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [userInput, setUserInput] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
-  const [showExercise, setShowExercise] = useState(false);
+  const [currentExercise, setCurrentExercise] = useState<any>(null);
   const [showHint, setShowHint] = useState(false);
   const [teachingPhrase, setTeachingPhrase] = useState<string | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
@@ -107,6 +109,12 @@ const QuestPlay: React.FC = () => {
         processNextStep(stepIndex + 1);
       }, 2000);
       
+    } else if (step.speaker === 'exercise') {
+      // Show exercise
+      if (step.exercise) {
+        setCurrentExercise(step.exercise);
+        setCurrentStepIndex(stepIndex);
+      }
     } else if (step.speaker === 'user_prompt') {
       // First, teach the phrase
       const phraseToTeach = step.acceptableResponses?.[0];
@@ -180,7 +188,7 @@ const QuestPlay: React.FC = () => {
     );
   };
 
-  const handleQuestComplete = () => {
+  const handleQuestComplete = async () => {
     const completeMessage: Message = {
       id: 'complete',
       speaker: 'guide',
@@ -188,6 +196,18 @@ const QuestPlay: React.FC = () => {
       timestamp: new Date(),
     };
     setMessages(prev => [...prev, completeMessage]);
+    
+    // Calculate score (simple: 100% for now, will improve with exercises)
+    const score = 100;
+    
+    // Save completion to backend
+    if (questId && user?.userId) {
+      try {
+        await questService.completeQuest(questId, user.userId, score);
+      } catch (error) {
+        console.error('Failed to save quest completion:', error);
+      }
+    }
     
     // Navigate to completion page after a delay
     setTimeout(() => {
@@ -272,8 +292,33 @@ const QuestPlay: React.FC = () => {
           <div ref={messagesEndRef} />
         </div>
 
+        {/* Exercise */}
+        {currentExercise && (
+          <ExerciseCard
+            exercise={currentExercise}
+            onComplete={(isCorrect) => {
+              // Add feedback message
+              const feedbackMsg: Message = {
+                id: `exercise-feedback-${Date.now()}`,
+                speaker: 'guide',
+                text: isCorrect 
+                  ? '✅ Excellent work! You got it right!' 
+                  : '💪 Good try! Keep practicing and you\'ll get it next time.',
+                timestamp: new Date(),
+              };
+              setMessages(prev => [...prev, feedbackMsg]);
+              setCurrentExercise(null);
+              
+              // Move to next step
+              setTimeout(() => {
+                processNextStep(currentStepIndex + 1);
+              }, 1500);
+            }}
+          />
+        )}
+
         {/* User Input */}
-        {isUserTurn && (
+        {isUserTurn && !currentExercise && (
           <div className="input-area">
             <div className="input-prompt">
               {currentStep?.userPrompt}
