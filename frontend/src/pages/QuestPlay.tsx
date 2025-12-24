@@ -64,6 +64,7 @@ const QuestPlay: React.FC = () => {
   }, [messages]);
 
   const processNextStep = (stepIndex: number) => {
+    try {
     if (!currentQuest?.quest?.questDialogue?.dialogueSteps) return;
     
     const steps = currentQuest.quest.questDialogue.dialogueSteps;
@@ -132,13 +133,29 @@ const QuestPlay: React.FC = () => {
       setCurrentStepIndex(stepIndex);
       // User input form is already visible
     }
+    } catch (error) {
+      console.error('Error processing step:', error);
+      const errorMessage: Message = {
+        id: `error-${Date.now()}`,
+        speaker: 'guide',
+        text: 'Something went wrong. Let me try to continue...',
+        timestamp: new Date(),
+      };
+      setMessages(prev => [...prev, errorMessage]);
+      // Try to continue to next step
+      if (stepIndex + 1 < (currentQuest?.quest?.questDialogue?.steps?.length || 0)) {
+        setTimeout(() => processNextStep(stepIndex + 1), 2000);
+      }
+    }
   };
 
   const handleUserSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!userInput.trim() || isProcessing) return;
-    
+
     setIsProcessing(true);
+    
+    try {
     
     // Add user message to chat
     const userMessage: Message = {
@@ -178,14 +195,34 @@ const QuestPlay: React.FC = () => {
         processNextStep(currentStepIndex + 1);
       }, 1500);
     }, 1000);
+    } catch (error) {
+      console.error('Error processing user response:', error);
+      setIsProcessing(false);
+      // Show error message
+      const errorMessage: Message = {
+        id: `error-${Date.now()}`,
+        speaker: 'guide',
+        text: 'Oops! Something went wrong. Please try again.',
+        timestamp: new Date(),
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    }
+  };  // Normalize text by removing accents and special characters
+  const normalizeText = (text: string): string => {
+    return text
+      .toLowerCase()
+      .trim()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '') // Remove accents
+      .replace(/[^a-z0-9\s]/g, ''); // Remove special chars except spaces
   };
 
   const validateUserResponse = (userResponse: string, acceptableResponses: string[]): boolean => {
-    const normalized = userResponse.toLowerCase().trim();
-    return acceptableResponses.some(acceptable => 
-      acceptable.toLowerCase().trim() === normalized ||
-      normalized.includes(acceptable.toLowerCase().trim())
-    );
+    const normalized = normalizeText(userResponse);
+    return acceptableResponses.some(acceptable => {
+      const normalizedAcceptable = normalizeText(acceptable);
+      return normalized === normalizedAcceptable || normalized.includes(normalizedAcceptable);
+    });
   };
 
   const handleQuestComplete = async () => {
