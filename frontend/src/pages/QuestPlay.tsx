@@ -26,6 +26,7 @@ const QuestPlay: React.FC = () => {
   const [showExercise, setShowExercise] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const [teachingPhrase, setTeachingPhrase] = useState<string | null>(null);
+  const [isInitialized, setIsInitialized] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Load quest data
@@ -37,7 +38,8 @@ const QuestPlay: React.FC = () => {
 
   // Initialize quest with guide intro
   useEffect(() => {
-    if (currentQuest?.quest?.questDialogue?.scenario) {
+    if (currentQuest?.quest?.questDialogue?.scenario && !isInitialized) {
+      setIsInitialized(true);
       const scenario = currentQuest.quest.questDialogue.scenario;
       const guideIntro: Message = {
         id: 'intro',
@@ -52,7 +54,7 @@ const QuestPlay: React.FC = () => {
         processNextStep(0);
       }, 1000);
     }
-  }, [currentQuest]);
+  }, [currentQuest, isInitialized]);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
