@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard';
 import QuestList from './pages/QuestList';
 import QuestDetail from './pages/QuestDetail';
 import QuestPlay from './pages/QuestPlay';
+import QuestComplete from './pages/QuestComplete';
 import './App.css';
 
 function App() {
@@ -41,6 +42,11 @@ function App() {
           <Route path="/quests/:questId/play" element={
             <ProtectedRoute>
               <QuestPlay />
+            </ProtectedRoute>
+          } />
+          <Route path="/quests/:questId/complete" element={
+            <ProtectedRoute>
+              <QuestComplete />
             </ProtectedRoute>
           } />
         </Routes>
