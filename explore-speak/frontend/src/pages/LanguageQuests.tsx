@@ -30,7 +30,7 @@ const LANGUAGE_INFO: Record<string, LanguageInfo> = {
   'portuguese-to-english': {
     name: 'Portuguese to English',
     flag: '🇧🇷→🇺🇸',
-    description: 'Master English with Tommy, your Brazilian guide',
+    description: 'Learn English with Tommy, your American guide from Chicago',
     color: '#06b6d4'
   },
   italian: {
@@ -54,7 +54,7 @@ const LANGUAGE_INFO: Record<string, LanguageInfo> = {
   'spanish-to-english': {
     name: 'Spanish to English',
     flag: '🇲🇽→🇺🇸',
-    description: 'Learn English with Tommy, your Mexican guide',
+    description: 'Learn English with Tommy, your American guide from Chicago',
     color: '#a855f7'
   },
   german: {

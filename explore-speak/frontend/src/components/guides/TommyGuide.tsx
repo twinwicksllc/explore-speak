@@ -23,21 +23,21 @@ const TommyGuide: React.FC<TommyGuideProps> = ({
   const getTommyProfile = () => {
     if (language === 'portuguese') {
       return {
-        name: 'Tommy Silva',
-        origin: 'Rio de Janeiro, Brazil',
-        avatar: '🇧🇷',
-        personality: 'energetic and friendly',
-        specialty: 'Brazilian Portuguese to English',
-        intro: "Hey there! I'm Tommy from Rio! 🇧🇷 Let me help you master English while sharing Brazilian culture. I'll make learning fun with samba rhythms and Brazilian expressions!"
+        name: 'Tommy O\'Malley',
+        origin: 'Chicago, Illinois',
+        avatar: '🇺🇸',
+        personality: 'welcoming and friendly',
+        specialty: 'English for Portuguese Speakers',
+        intro: "Hey there! I'm Tommy from Chicago! 🇺🇸 I'm excited to help you learn English and feel at home in America. I'll show you how to share your Brazilian culture while speaking natural English - maybe even teach you some Chicago slang along the way!"
       };
     } else {
       return {
-        name: 'Tommy Rodriguez',
-        origin: 'Mexico City, Mexico',
-        avatar: '🇲🇽',
-        personality: 'warm and encouraging',
-        specialty: 'Mexican Spanish to English',
-        intro: "¡Hola amigos! I'm Tommy from Mexico City! 🇲🇽 I'll teach you English while we explore Mexican culture together. Get ready for some spicy learning adventures!"
+        name: 'Tommy O\'Malley',
+        origin: 'Chicago, Illinois',
+        avatar: '🇺🇸',
+        personality: 'welcoming and encouraging',
+        specialty: 'English for Spanish Speakers',
+        intro: "¡Hola amigos! I'm Tommy from Chicago! 🇺🇸 I'm thrilled to help you master English and welcome you to American culture. Together, we'll keep your Mexican heritage alive while you speak English confidently - Chicago style!"
       };
     }
   };
@@ -45,25 +45,25 @@ const TommyGuide: React.FC<TommyGuideProps> = ({
   const tommy = getTommyProfile();
 
   const samplePhrases = language === 'portuguese' ? [
-    { phrase: "Como vai?", translation: "How are you?", tip: "Use 'How's it going?' for casual conversations!" },
-    { phrase: "Muito obrigado!", translation: "Thank you very much!", tip: "In English, you can say 'Thanks a bunch!' informally." },
-    { phrase: "Pode me ajudar?", translation: "Can you help me?", tip: "Try 'Could you give me a hand?' for a friendly approach." }
+    { phrase: "Como vai?", translation: "How are you?", tip: "In Chicago, we say 'How's it going?' - super casual and friendly!" },
+    { phrase: "Muito obrigado!", translation: "Thank you very much!", tip: "Try 'Thanks a bunch!' or 'I really appreciate it!' - very Midwestern!" },
+    { phrase: "Pode me ajudar?", translation: "Can you help me?", tip: "Chicago folks say 'Could you give me a hand?' - we're always helpful!" }
   ] : [
-    { phrase: "¿Cómo estás?", translation: "How are you?", tip: "Use 'What's up?' for casual conversations!" },
-    { phrase: "Muchas gracias!", translation: "Thank you very much!", tip: "In English, you can say 'Thanks a million!' informally." },
-    { phrase: "¿Puedes ayudarme?", translation: "Can you help me?", tip: "Try 'Could you lend me a hand?' for a friendly approach." }
+    { phrase: "¿Cómo estás?", translation: "How are you?", tip: "In Chicago, we love 'How's it going?' - very welcoming!" },
+    { phrase: "Muchas gracias!", translation: "Thank you very much!", tip: "Try 'Thanks a ton!' or 'I really appreciate it!' - Chicago style!" },
+    { phrase: "¿Puedes ayudarme?", translation: "Can you help me?", tip: "Say 'Could you lend me a hand?' - Chicagoans are super friendly!" }
   ];
 
   const encouragementMessages = language === 'portuguese' ? [
-    "Você está indo muito bem! Keep it up!",
-    "Excelente trabalho! You're a natural!",
+    "Você está indo muito bem! Keep it up, my friend!",
+    "Excelente trabalho! You're doing great - Chicago style!",
     "Continue assim! You're crushing it!",
-    "Que progresso! Amazing job!"
+    "Que progresso! Amazing job - you got this!"
   ] : [
-    "¡Estás yendo muy bien! Keep it up!",
-    "¡Excelente trabajo! You're a natural!",
+    "¡Estás yendo muy bien! Keep it up, my friend!",
+    "¡Excelente trabajo! You're doing great - Chicago style!",
     "¡Así se hace! You're crushing it!",
-    "¡Qué progreso! Amazing job!"
+    "¡Qué progreso! Amazing job - you got this!"
   ];
 
   const handleSendMessage = async () => {
@@ -76,10 +76,10 @@ const TommyGuide: React.FC<TommyGuideProps> = ({
     // Simulate Tommy's response
     setTimeout(() => {
       const responses = [
-        `Great question! ${userMessage}`,
-        `I love your enthusiasm! Let me help you with that.`,
-        `That's exactly what I was hoping you'd ask! Here's my advice...`,
-        `¡Excelente! Let's break this down together.`
+        `Great question! ${userMessage} - Chicago style!`,
+        `I love your enthusiasm! Let me help you with that, my friend.`,
+        `That's exactly what I was hoping you'd ask! Here in Chicago, we'd say...`,
+        `¡Excelente! Let's break this down together. You're doing amazing!`
       ];
       
       const randomResponse = responses[Math.floor(Math.random() * responses.length)];
@@ -181,11 +181,11 @@ const TommyGuide: React.FC<TommyGuideProps> = ({
 
           {/* Cultural Tips */}
           <div className="cultural-tips">
-            <h4>Cultural Tip</h4>
+            <h4>American Cultural Tip</h4>
             <p>
               {language === 'portuguese' 
-                ? "In Brazil, we love to mix English words with Portuguese! 'Happy hour' is common, and we say 'OK' all the time. It's called 'Portunhol' - our special mix!"
-                : "In Mexico, we love using English words in Spanish! We say 'okay', 'bye-bye', and 'marketing' like they're Spanish words. It's called 'Spanglish' and it's totally normal!"
+                ? "In America, especially Chicago, we love cultural diversity! People will be fascinated by your Brazilian culture. Don't be afraid to share words like 'saudade' - we think it's beautiful! And Chicagoans love learning about Brazilian food and music!"
+                : "In America, especially Chicago, we celebrate Mexican culture every day! People will love hearing about your traditions. Don't hesitate to share Mexican expressions - Chicago has the best Mexican food outside Mexico! We're proud of our diversity."
               }
             </p>
           </div>

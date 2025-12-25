@@ -42,7 +42,7 @@ const LanguageSelection: React.FC = () => {
       code: 'portuguese-to-english',
       name: 'Portuguese to English',
       flag: '🇧🇷→🇺🇸',
-      description: 'Master English with Tommy, your Brazilian guide',
+      description: 'Learn English with Tommy, your American guide from Chicago',
       questCount: 8,
       difficulty: 'Beginner',
       color: '#06b6d4'
@@ -78,7 +78,7 @@ const LanguageSelection: React.FC = () => {
       code: 'spanish-to-english',
       name: 'Spanish to English',
       flag: '🇲🇽→🇺🇸',
-      description: 'Learn English with Tommy, your Mexican guide',
+      description: 'Learn English with Tommy, your American guide from Chicago',
       questCount: 8,
       difficulty: 'Beginner',
       color: '#a855f7'

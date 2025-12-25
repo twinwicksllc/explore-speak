@@ -58,15 +58,15 @@ export const tommyQuests: TommyQuest[] = [
         tip: '"Joia" (jewel) means cool in Brazilian slang. "Is everything cool?" works perfectly!'
       }
     ],
-    culturalContext: 'Brazilians are very warm and love to greet everyone! In Brazil, it\'s normal to greet strangers with a smile and friendly "Oi!". When learning English, Tommy will help you keep that Brazilian warmth while using natural English expressions.',
-    tommyIntro: "Hey there! Welcome to your first English adventure! 🇧🇷 I'm Tommy from Rio, and I'm so excited to teach you English while we keep our Brazilian charm! Let's start with greetings - Brazilians love to say 'E aí!' and in English, you can say 'Hey there!' with the same energy!",
+    culturalContext: 'Brazilians are very warm and love to greet everyone! In America, especially Chicago, people will love your friendly Brazilian style. Tommy will help you share your Brazilian warmth while using natural American English expressions that Americans actually use!',
+    tommyIntro: "Hey there! Welcome to your first English adventure! 🇺🇸 I'm Tommy from Chicago, and I'm so excited to help you learn English while keeping your amazing Brazilian spirit! Americans will love your friendly style - let's show them how Brazilians say hello, but in English!",
     exercises: [
       {
         type: 'translation',
-        question: 'How would you say "E aí, tudo bem?" in casual English?',
+        question: 'How would you say "E aí, tudo bem?" in casual American English?',
         options: ["Hello, how are you?", "Hey, what's up?", "Good morning", "Hi there"],
         correctAnswer: "Hey, what's up?",
-        explanation: "Hey, what's up?' captures the casual, friendly vibe of 'E aí, tudo bem?' perfectly!"
+        explanation: "Hey, what's up?' is perfect! Here in Chicago, we say this all the time - super friendly and casual!"
       },
       {
         type: 'conversation',
@@ -113,8 +113,8 @@ export const tommyQuests: TommyQuest[] = [
         tip: 'You can also say "That was amazing!" or "Loved it!" for more enthusiasm.'
       }
     ],
-    culturalContext: 'Brazilian food is amazing! Feijoada, pão de queijo, brigadeiro... Tommy will teach you how to talk about our delicious food in English and even explain what these dishes are to foreigners!',
-    tommyIntro: "Time to talk about my favorite topic - food! 🍲 Brazilian food is the best in the world (I might be biased!), and I'll teach you how to order it and describe it perfectly in English. We'll even learn how to explain what feijoada is to your foreign friends!",
+    culturalContext: 'Brazilian food is amazing! Americans are becoming more interested in Brazilian cuisine - feijoada, pão de queijo, brigadeiro... Tommy from Chicago will teach you how to share your culinary culture with Americans who might be trying Brazilian food for the first time!',
+    tommyIntro: "Time to talk about food - both Brazilian and American! 🍲 I'm excited to teach you how to describe Brazilian dishes to Americans who've never tried them. And trust me, Chicagoans love good food - they'll be fascinated by feijoada and pão de queijo!",
     exercises: [
       {
         type: 'translation',
@@ -164,8 +164,8 @@ export const tommyQuests: TommyQuest[] = [
         tip: 'In Mexican Spanish, "padrísimo" means super cool. In English, "awesome" or "really cool" is perfect!'
       }
     ],
-    culturalContext: 'Mexicans are incredibly friendly and expressive! We love to mix Spanish and English in our daily conversations - it\'s called Spanglish! Tommy will teach you how to keep that Mexican warmth while speaking natural English.',
-    tommyIntro: "¡Hola amigos! Welcome to your English journey with your Mexican guide Tommy! 🇲🇽 I'm from Mexico City and I'm so excited to teach you English while keeping our Mexican flavor! We'll learn how to say '¿Qué onda?' in English and keep that friendly Mexican energy!",
+    culturalContext: 'Mexicans are incredibly friendly and expressive! In America, especially Chicago, people will love your warm Mexican style. Tommy will teach you how to share your Mexican enthusiasm while using American English that feels natural and confident.',
+    tommyIntro: "¡Hola amigos! Welcome to your English journey with me, Tommy from Chicago! 🇺🇸 I'm so excited to help you bring your amazing Mexican energy to American English! Chicagoans love Mexican culture, and I'll help you share your personality while speaking English like you've been here for years!",
     exercises: [
       {
         type: 'translation',
@@ -213,8 +213,8 @@ export const tommyQuests: TommyQuest[] = [
         tip: 'This is the perfect translation! You can also say "Go Mexico!" in sports contexts.'
       }
     ],
-    culturalContext: 'Mexican culture is rich and beautiful! From Día de Muertos to posadas, we have amazing traditions. Tommy will teach you how to share these wonderful cultural aspects with the world in English while keeping our Mexican pride!',
-    tommyIntro: "Time to show the world how amazing Mexican culture is! 🇲🇽 I'll teach you how to explain our traditions like Día de Muertos, posadas, and more in English. We'll keep our Mexican pride while sharing our culture with everyone!",
+    culturalContext: 'Mexican culture is rich and beautiful! Americans, especially in Chicago, are fascinated by Mexican traditions like Día de Muertos and posadas. Tommy from Chicago will teach you how to share your amazing Mexican heritage with Americans who are eager to learn!',
+    tommyIntro: "Time to share your incredible Mexican culture with Americans! 🇲🇽 As someone who loves Mexican culture here in Chicago, I'm excited to teach you how to explain traditions like Día de Muertos to Americans who might be experiencing them for the first time. Let's show everyone how beautiful Mexican heritage is!",
     exercises: [
       {
         type: 'conversation',
@@ -258,8 +258,8 @@ export const tommyQuests: TommyQuest[] = [
         tip: 'Using "Could you" is more polite than "Can you" in business contexts.'
       }
     ],
-    culturalContext: 'Brazilian professionals are known for being warm and relationship-focused. Tommy will teach you how to maintain that Brazilian warmth while being professional in English business contexts.',
-    tommyIntro: "Let's get professional! 🏢 Brazilian professionals are conquering the world, and I'll help you communicate with confidence in international business. We'll learn how to write emails, participate in meetings, and network while keeping our Brazilian charm!",
+    culturalContext: 'Brazilian professionals bring warmth and relationship-building skills that American companies love! Tommy from Chicago will help you adapt your Brazilian communication style to American business culture while keeping your natural charm and relationship-focused approach.',
+    tommyIntro: "Let's get professional, Chicago style! 🏢 I'll help you bring your amazing Brazilian communication skills to American business. Brazilian professionals are valued here for your relationship-building approach - I'll teach you how to adapt that style for American workplaces while staying true to yourself!",
     exercises: [
       {
         type: 'conversation',
