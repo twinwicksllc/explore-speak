@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { QuestProvider } from './context/QuestContext';
+import { LanguageProvider } from './context/LanguageContext';
 import ErrorBoundary from './components/ErrorBoundary';
 import ProtectedRoute from './components/ProtectedRoute';
 import Login from './components/auth/Login';
@@ -18,10 +19,11 @@ import './App.css';
 function App() {
   return (
     <ErrorBoundary>
-      <Router>
-        <AuthProvider>
-        <QuestProvider>
-        <Routes>
+      <LanguageProvider>
+        <Router>
+          <AuthProvider>
+          <QuestProvider>
+          <Routes>
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
@@ -62,9 +64,10 @@ function App() {
             </ProtectedRoute>
           } />
         </Routes>
-        </QuestProvider>
-        </AuthProvider>
-      </Router>
+          </QuestProvider>
+          </AuthProvider>
+        </Router>
+      </LanguageProvider>
     </ErrorBoundary>
   );
 }

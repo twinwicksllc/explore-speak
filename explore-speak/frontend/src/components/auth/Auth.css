@@ -2,6 +2,7 @@
 .auth-container {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 1rem;
@@ -9,6 +10,13 @@
   font-family: var(--font-family-primary, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
   position: relative;
   overflow: hidden;
+}
+
+.language-switcher-auth {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
 }
 
 .auth-container::before {

@@ -1,11 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useLanguage } from '../context/LanguageContext';
+import LanguageSwitcher from '../components/LanguageSwitcher';
 import './Dashboard.css';
 
 const Dashboard: React.FC = () => {
   const { user, signout } = useAuth();
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   const handleSignout = () => {
     signout();
@@ -21,21 +24,22 @@ const Dashboard: React.FC = () => {
     <div className="dashboard-container">
       <nav className="dashboard-nav">
         <div className="nav-brand">
-          <h1>Explore Speak</h1>
+          <h1>{t.nav.exploreSpeak}</h1>
         </div>
         <div className="nav-actions">
+          <LanguageSwitcher />
           <button onClick={handleSignout} className="signout-button">
-            Sign Out
+            {t.nav.signOut}
           </button>
         </div>
       </nav>
 
       <main className="dashboard-main">
         <div className="welcome-section">
-          <h2>Welcome back, {user.name}! 👋</h2>
-          <p className="welcome-subtitle">Ready to continue your language learning journey?</p>
+          <h2>{t.dashboard.welcomeBack}, {user.name}! 👋</h2>
+          <p className="welcome-subtitle">{t.dashboard.readyToContinue}</p>
           <button onClick={() => navigate('/languages')} className="browse-quests-button">
-            🌍 Browse Languages
+            🌍 {t.dashboard.browseLanguages}
           </button>
         </div>
 
@@ -43,8 +47,8 @@ const Dashboard: React.FC = () => {
           <div className="stat-card">
             <div className="stat-icon">🎯</div>
             <div className="stat-content">
-              <h3>Level {user.level || 1}</h3>
-              <p>Current Level</p>
+              <h3>{t.quests.level} {user.level || 1}</h3>
+              <p>{t.dashboard.currentLevel}</p>
             </div>
           </div>
 
@@ -52,33 +56,33 @@ const Dashboard: React.FC = () => {
             <div className="stat-icon">⚡</div>
             <div className="stat-content">
               <h3>{user.xp || 0} XP</h3>
-              <p>Experience Points</p>
+              <p>{t.dashboard.experiencePoints}</p>
             </div>
           </div>
 
           <div className="stat-card">
             <div className="stat-icon">🔥</div>
             <div className="stat-content">
-              <h3>{user.streak || 0} Days</h3>
-              <p>Current Streak</p>
+              <h3>{user.streak || 0} {t.dashboard.days}</h3>
+              <p>{t.dashboard.currentStreak}</p>
             </div>
           </div>
         </div>
 
         <div className="info-section">
           <div className="info-card">
-            <h3>🚀 Start Your Language Adventure!</h3>
-            <p>Choose from 8 language tracks including French, Portuguese, Italian, Japanese, Spanish, German, plus Portuguese to English and Spanish to English with Tommy as your guide!</p>
+            <h3>🚀 {t.dashboard.startAdventure}</h3>
+            <p>{t.dashboard.chooseFrom}</p>
             <p className="info-details">
-              Each quest includes:
-              <br />• Cultural context and learning objectives
-              <br />• Interactive dialogue with AI guides (including Tommy! 🇧🇷🇲🇽)
-              <br />• Vocabulary and grammar exercises
-              <br />• XP rewards and achievements
-                  <br />• Specialized tracks for Portuguese→English and Spanish→English
+              {t.dashboard.eachQuestIncludes}
+              <br />• {t.dashboard.culturalContext}
+              <br />• {t.dashboard.interactiveDialogue}
+              <br />• {t.dashboard.vocabularyExercises}
+              <br />• {t.dashboard.xpRewards}
+                  <br />• {t.dashboard.specializedTracks}
             </p>
             <div className="info-note">
-              Click <strong>Browse Languages</strong> above to get started!
+              {t.dashboard.clickBrowse}
             </div>
           </div>
         </div>

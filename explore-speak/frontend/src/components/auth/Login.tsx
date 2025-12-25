@@ -3,7 +3,9 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useAuth } from '../../context/AuthContext';
+import { useLanguage } from '../../context/LanguageContext';
 import { signinSchema, type SigninFormData } from '../../utils/validation';
+import LanguageSwitcher from '../LanguageSwitcher';
 import './Auth.css';
 
 const Login: React.FC = () => {
@@ -12,6 +14,7 @@ const Login: React.FC = () => {
   
   const { signin } = useAuth();
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   const {
     register,
@@ -38,10 +41,13 @@ const Login: React.FC = () => {
 
   return (
     <div className="auth-container">
+      <div className="language-switcher-auth">
+        <LanguageSwitcher />
+      </div>
       <div className="auth-card">
         <div className="auth-header">
-          <h1 className="auth-title">Welcome Back!</h1>
-          <p className="auth-subtitle">Sign in to continue your language learning journey</p>
+          <h1 className="auth-title">{t.auth.welcomeBack}</h1>
+          <p className="auth-subtitle">{t.auth.signInToContinue}</p>
         </div>
 
         {serverError && (
@@ -56,7 +62,7 @@ const Login: React.FC = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="auth-form" noValidate>
           <div className="form-group">
             <label htmlFor="email" className="form-label">
-              Email
+              {t.auth.email}
             </label>
             <input
               id="email"
@@ -78,7 +84,7 @@ const Login: React.FC = () => {
 
           <div className="form-group">
             <label htmlFor="password" className="form-label">
-              Password
+              {t.auth.password}
             </label>
             <input
               id="password"
@@ -110,19 +116,19 @@ const Login: React.FC = () => {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Signing in...
+                {t.auth.signingIn}
               </>
             ) : (
-              'Sign In'
+              t.auth.signIn
             )}
           </button>
         </form>
 
         <div className="auth-footer">
           <p className="auth-footer-text">
-            Don't have an account?{' '}
+            {t.auth.dontHaveAccount}{' '}
             <Link to="/signup" className="auth-link">
-              Sign up
+              {t.auth.signUp}
             </Link>
           </p>
         </div>
