@@ -34,8 +34,8 @@ const Dashboard: React.FC = () => {
         <div className="welcome-section">
           <h2>Welcome back, {user.name}! 👋</h2>
           <p className="welcome-subtitle">Ready to continue your language learning journey?</p>
-          <button onClick={() => navigate('/quests')} className="browse-quests-button">
-            🌍 Browse Quests
+          <button onClick={() => navigate('/languages')} className="browse-quests-button">
+            🌍 Browse Languages
           </button>
         </div>
 
@@ -68,7 +68,7 @@ const Dashboard: React.FC = () => {
         <div className="info-section">
           <div className="info-card">
             <h3>🚀 Start Your Language Adventure!</h3>
-            <p>Choose from 4 interactive quests in French, Portuguese, Italian, and Japanese.</p>
+            <p>Choose from 6 languages including French, Portuguese, Italian, Japanese, Spanish, and German.</p>
             <p className="info-details">
               Each quest includes:
               <br />• Cultural context and learning objectives
@@ -77,7 +77,7 @@ const Dashboard: React.FC = () => {
               <br />• XP rewards and achievements
             </p>
             <div className="info-note">
-              Click <strong>Browse Quests</strong> above to get started!
+              Click <strong>Browse Languages</strong> above to get started!
             </div>
           </div>
         </div>

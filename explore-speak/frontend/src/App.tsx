@@ -8,6 +8,8 @@ import Signup from './components/auth/Signup';
 import ConfirmEmail from './components/auth/ConfirmEmail';
 import Dashboard from './pages/Dashboard';
 import QuestList from './pages/QuestList';
+import LanguageSelection from './pages/LanguageSelection';
+import LanguageQuests from './pages/LanguageQuests';
 import QuestDetail from './pages/QuestDetail';
 import QuestPlay from './pages/QuestPlay';
 import QuestComplete from './pages/QuestComplete';
@@ -34,7 +36,17 @@ function App() {
               <QuestList />
             </ProtectedRoute>
           } />
-          <Route path="/quests/:questId" element={
+          <Route path="/languages" element={
+              <ProtectedRoute>
+                <LanguageSelection />
+              </ProtectedRoute>
+            } />
+            <Route path="/quests/:languageCode" element={
+              <ProtectedRoute>
+                <LanguageQuests />
+              </ProtectedRoute>
+            } />
+            <Route path="/quests/:questId" element={
             <ProtectedRoute>
               <QuestDetail />
             </ProtectedRoute>
