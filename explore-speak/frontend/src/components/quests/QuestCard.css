@@ -1,0 +1,108 @@
+.quest-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.quest-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border-color: #6366f1;
+}
+
+.quest-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.quest-flag {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.quest-language {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4b5563;
+  flex: 1;
+}
+
+.quest-level {
+  background: #f3f4f6;
+  color: #6b7280;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.quest-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 20px 0;
+  line-height: 1.4;
+  min-height: 50px;
+}
+
+.quest-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.quest-time {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.time-icon {
+  font-size: 16px;
+}
+
+.quest-start-btn {
+  background: #6366f1;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.quest-start-btn:hover {
+  background: #4f46e5;
+}
+
+.quest-start-btn:active {
+  transform: scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .quest-card {
+    padding: 20px;
+  }
+
+  .quest-title {
+    font-size: 16px;
+    min-height: auto;
+  }
+
+  .quest-start-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}

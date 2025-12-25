@@ -1,0 +1,30 @@
+{
+  "Name": "language-quest",
+  "ApiEndpoint": "https://wtu71yyi3m.execute-api.us-east-1.amazonaws.com",
+  "CorsConfiguration": {
+    "AllowCredentials": true,
+    "AllowHeaders": [
+      "content-type",
+      "authorization",
+      "x-amz-date",
+      "x-api-key",
+      "x-amz-security-token"
+    ],
+    "AllowMethods": [
+      "GET",
+      "POST",
+      "PUT",
+      "DELETE",
+      "OPTIONS"
+    ],
+    "AllowOrigins": [
+      "http://explorespeak.com",
+      "http://www.explorespeak.com",
+      "http://explorespeak.com.s3-website-us-east-1.amazonaws.com",
+      "https://explorespeak.com",
+      "https://www.explorespeak.com"
+    ],
+    "MaxAge": 3600
+  },
+  "CreatedDate": "2025-12-01T04:50:56+00:00"
+}

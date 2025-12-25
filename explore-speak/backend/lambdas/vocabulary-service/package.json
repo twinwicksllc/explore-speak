@@ -1,0 +1,13 @@
+{
+  "name": "vocabulary-service",
+  "version": "1.0.0",
+  "description": "Vocabulary and SRS service for ExploreSpeak",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo &quot;Error: no test specified&quot; && exit 1"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.400.0",
+    "@aws-sdk/lib-dynamodb": "^3.400.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "Name": "explorespeak.com.",
+  "Type": "A",
+  "AliasTarget": {
+    "HostedZoneId": "Z3AQBSTGFYJSTF",
+    "DNSName": "s3-website-us-east-1.amazonaws.com.",
+    "EvaluateTargetHealth": true
+  }
+}
+{
+  "Name": "www.explorespeak.com.",
+  "Type": "CNAME",
+  "TTL": 300,
+  "ResourceRecords": [
+    {
+      "Value": "www.explorespeak.com.s3-website-us-east-1.amazonaws.com"
+    }
+  ]
+}
