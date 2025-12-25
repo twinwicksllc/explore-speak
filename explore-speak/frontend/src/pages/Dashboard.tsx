@@ -68,13 +68,14 @@ const Dashboard: React.FC = () => {
         <div className="info-section">
           <div className="info-card">
             <h3>🚀 Start Your Language Adventure!</h3>
-            <p>Choose from 6 languages including French, Portuguese, Italian, Japanese, Spanish, and German.</p>
+            <p>Choose from 8 language tracks including French, Portuguese, Italian, Japanese, Spanish, German, plus Portuguese to English and Spanish to English with Tommy as your guide!</p>
             <p className="info-details">
               Each quest includes:
               <br />• Cultural context and learning objectives
-              <br />• Interactive dialogue with AI guides
+              <br />• Interactive dialogue with AI guides (including Tommy! 🇧🇷🇲🇽)
               <br />• Vocabulary and grammar exercises
               <br />• XP rewards and achievements
+                  <br />• Specialized tracks for Portuguese→English and Spanish→English
             </p>
             <div className="info-note">
               Click <strong>Browse Languages</strong> above to get started!

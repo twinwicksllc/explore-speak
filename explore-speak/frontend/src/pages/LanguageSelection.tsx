@@ -39,6 +39,15 @@ const LanguageSelection: React.FC = () => {
       color: '#10b981'
     },
     {
+      code: 'portuguese-to-english',
+      name: 'Portuguese to English',
+      flag: '🇧🇷→🇺🇸',
+      description: 'Master English with Tommy, your Brazilian guide',
+      questCount: 8,
+      difficulty: 'Beginner',
+      color: '#06b6d4'
+    },
+    {
       code: 'italian',
       name: 'Italian',
       flag: '🇮🇹',
@@ -64,6 +73,15 @@ const LanguageSelection: React.FC = () => {
       questCount: 14,
       difficulty: 'Beginner',
       color: '#f97316'
+    },
+    {
+      code: 'spanish-to-english',
+      name: 'Spanish to English',
+      flag: '🇲🇽→🇺🇸',
+      description: 'Learn English with Tommy, your Mexican guide',
+      questCount: 8,
+      difficulty: 'Beginner',
+      color: '#a855f7'
     },
     {
       code: 'german',
