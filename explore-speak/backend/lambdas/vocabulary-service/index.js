@@ -61,7 +61,10 @@ async function getDueCards(userId, language) {
       TableName: VOCABULARY_TABLE,
       IndexName: 'userId-nextReviewDate-index',
       KeyConditionExpression: 'userId = :userId AND nextReviewDate <= :now',
-      FilterExpression: 'language = :language',
+      FilterExpression: '#lang = :language',
+         ExpressionAttributeNames: {
+           '#lang': 'language'
+         },
       ExpressionAttributeValues: {
         ':userId': userId,
         ':now': now,
@@ -205,7 +208,10 @@ async function getVocabularyStats(userId, language) {
     const params = {
       TableName: VOCABULARY_TABLE,
       IndexName: 'userId-language-index',
-      KeyConditionExpression: 'userId = :userId AND language = :language',
+      KeyConditionExpression: 'userId = :userId AND #lang = :language',
+         ExpressionAttributeNames: {
+           '#lang': 'language'
+         },
       ExpressionAttributeValues: {
         ':userId': userId,
         ':language': language,

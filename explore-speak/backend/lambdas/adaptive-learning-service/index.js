@@ -186,7 +186,10 @@ async function getPersonalizedQuests(userId, language, limit = 5) {
     // Get all quests for the language
     const questsParams = {
       TableName: QUESTS_TABLE,
-      FilterExpression: 'language = :language',
+      FilterExpression: '#lang = :language',
+         ExpressionAttributeNames: {
+           '#lang': 'language'
+         },
       ExpressionAttributeValues: {
         ':language': language,
       },
